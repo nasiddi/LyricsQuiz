@@ -6,9 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+.idea
+
+backend/assets/
+backend/data/
+
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -102,3 +106,5 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+# OSX
+.DS_Store
