@@ -15,15 +15,18 @@ routes.post('/getlyrics', async (req, res) => {
   // eslint-disable-next-line
   let song = req.body.song;
   if (song === '' && req.body.artist !== '') {
-    const titleFile = path.join(config.directories.storage, `${req.body.artist}.txt`);
-    fs.readFile(titleFile, (err, data) => {
-      if (err) throw err;
-      const songs = data.toString().split('\n');
-      song = songs[Math.floor(Math.random() * songs.length)];
-      lyr.fetch(req.body.artist, song, (err, lyrics) => {
-        res.json({ lyrics: err || lyrics, title: song });
+    const titleFile = path.join(config.directories.storage, `${req.body.artist.toLowerCase()}.txt`);
+
+    if (fs.existsSync(titleFile)) {
+      fs.readFile(titleFile, (err, data) => {
+        if (err) throw err;
+        const songs = data.toString().split('\n');
+        song = songs[Math.floor(Math.random() * songs.length)];
+        lyr.fetch(req.body.artist, song, (err, lyrics) => {
+          res.json({ lyrics: err || lyrics, title: song });
+        });
       });
-    });
+    }
   } else {
     lyr.fetch(req.body.artist, song, (err, lyrics) => {
       res.json({ lyrics: err || lyrics, title: song });
