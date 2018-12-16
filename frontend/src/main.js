@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuePromiseBtn from 'vue-promise-btn';
-
+import Sticky from 'vue-sticky-directive';
 import App from './App';
 import router from './router';
 
@@ -27,7 +27,7 @@ shared.install = () => {
 };
 
 Vue.use(shared);
-
+Vue.use(Sticky);
 Vue.mixin({
   methods: {
     formatPercentage(number) {
@@ -86,15 +86,14 @@ Vue.mixin({
         .map(str => str.substring(0, 6))
         .map((str) => {
           const strNum = parseInt(str, 16);
-          const distances = _.chain(colors)
+          const d = _.chain(colors)
             .zipObject(colors)
             .mapValues(color => parseInt(color, 16))
             .mapValues(color => hammingDistance(strNum, color))
             .value();
 
-          if (_.size(distances) > 0) {
-            const color = Object.keys(distances)
-              .reduce((a, b) => (distances[a] < distances[b] ? a : b));
+          if (_.size(d) > 0) {
+            const color = Object.keys(d).reduce((a, b) => (d[a] < d[b] ? a : b));
 
             _.remove(colors, val => val === color);
             return color;

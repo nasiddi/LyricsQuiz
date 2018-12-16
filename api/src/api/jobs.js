@@ -12,9 +12,23 @@ const config = require('../../config');
 const routes = express.Router();
 
 routes.post('/getlyrics', async (req, res) => {
-  lyr.fetch(req.body.artist, req.body.song, (err, lyrics) => {
-    res.send(err || lyrics);
-  });
+  // eslint-disable-next-line
+  let song = req.body.song;
+  if (song === '' && req.body.artist !== '') {
+    const titleFile = path.join(config.directories.storage, `${req.body.artist}.txt`);
+    fs.readFile(titleFile, (err, data) => {
+      if (err) throw err;
+      const songs = data.toString().split('\n');
+      song = songs[Math.floor(Math.random() * songs.length)];
+      lyr.fetch(req.body.artist, song, (err, lyrics) => {
+        res.json({ lyrics: err || lyrics, title: song });
+      });
+    });
+  } else {
+    lyr.fetch(req.body.artist, song, (err, lyrics) => {
+      res.json({ lyrics: err || lyrics, title: song });
+    });
+  }
 });
 
 routes.post('/synclog', async (req, res) => {

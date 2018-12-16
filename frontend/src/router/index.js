@@ -18,7 +18,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import DashboardIndex from '@/components/Dashboard/Index';
-import Home from '@/components/Home';
 import Login from '@/components/Auth/Login';
 import Auth from '@/components/Auth/utils';
 import SettingsIndex from '@/components/Settings/Index';
@@ -40,7 +39,7 @@ import BatchValidate from '@/components/Batch/BatchValidate';
 import BatchReport from '@/components/Batch/BatchReport';
 
 import ExceptionFile from '@/components/ExceptionFile/ExceptionFile';
-import BackUp from '@/components/BackUp';
+import LyricsQuiz from '@/components/LyricsQuiz';
 
 import Stats from '@/components/Stats/Stats';
 
@@ -82,7 +81,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: LyricsQuiz,
     },
     {
       path: '/update',
@@ -157,12 +156,6 @@ export default new Router({
       path: '/filetree/exceptionfile',
       name: 'filetree.exceptionfile',
       component: ExceptionFile,
-      beforeEnter: Vue.prototype.$auth.requireAuth,
-    },
-    {
-      path: '/backup',
-      name: 'backup',
-      component: BackUp,
       beforeEnter: Vue.prototype.$auth.requireAuth,
     },
     {
