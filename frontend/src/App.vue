@@ -84,26 +84,4 @@ input[type="number"]::-webkit-outer-spin-button {
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
-
-$random-colors: (
-  "001f3f": #001f3f,
-  "0074D9": #0074d9,
-  "7FDBFF": #7fdbff,
-  "39CCCC": #39cccc,
-  "3D9970": #3d9970,
-  "2ECC40": #2ecc40,
-  "01FF70": #01ff70,
-  "FFDC00": #ffdc00,
-  "FF851B": #ff851b,
-  "FF4136": #ff4136,
-  "85144b": #85144b,
-  "F012BE": #f012be,
-  "B10DC9": #b10dc9
-);
-
-@each $color, $value in $random-colors {
-  .badge-#{$color} {
-    @include badge-variant($value);
-  }
-}
 </style>

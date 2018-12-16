@@ -5,7 +5,6 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs-extra');
-const TVDB = require('node-tvdb');
 const lyr = require('lyrics-fetcher');
 const config = require('../../config');
 
@@ -18,8 +17,8 @@ routes.post('/getlyrics', async (req, res) => {
     const titleFile = path.join(config.directories.storage, `${req.body.artist.toLowerCase()}.txt`);
 
     if (fs.existsSync(titleFile)) {
-      fs.readFile(titleFile, (err, data) => {
-        if (err) throw err;
+      fs.readFile(titleFile, (errF, data) => {
+        if (errF) throw errF;
         const songs = data.toString().split('\n');
         song = songs[Math.floor(Math.random() * songs.length)];
         lyr.fetch(req.body.artist, song, (err, lyrics) => {
