@@ -4,8 +4,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0">
     <vue-snotify/>
-    <the-navigation/>
-
     <b-container
       class="container-fluid"
       fluid
@@ -28,21 +26,16 @@
 
     <br>
     <hr>
-
-    <the-footer class="container"/>
     <scroll-to-top/>
   </div>
 </template>
 
 <script>
-import TheNavigation from '@/components/Snippets/TheNavigation';
-import TheFooter from '@/components/Snippets/TheFooter';
 import ScrollToTop from '@/components/Snippets/ScrollToTop';
 
 export default {
-  components: { TheNavigation, TheFooter, ScrollToTop },
+  components: { ScrollToTop },
   created() {
-    this.loadSettings();
   },
   metaInfo: {
     title: 'Atlantis',

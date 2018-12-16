@@ -107,7 +107,7 @@ export default {
     columns: 10,
     found: 0,
     total: 0,
-    artist: '',
+    artist: 'queen',
     title: '',
     titleHidden: '',
   }),
