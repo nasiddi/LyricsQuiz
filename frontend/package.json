@@ -1,7 +1,6 @@
 {
-  "name": "texploration-frontend",
+  "name": "lyricsquiz-frontend",
   "version": "1.0.0",
-  "author": "Linus Metzler <hi@linusmetzler.me>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -15,7 +14,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.5.0",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@fortawesome/vue-fontawesome": "^0.1.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.1.2",
     "bootstrap-vue": "^2.0.0-rc.11",
     "chart.js": "^2.7.2",
     "fs": "^0.0.1-security",
