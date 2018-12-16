@@ -11,8 +11,6 @@ const config = require('./../../config');
 const auth = require('./auth');
 const authMiddleware = require('./auth-middleware');
 const jobs = require('./jobs');
-const python = require('./python');
-const settings = require('./settings');
 
 const { port } = config;
 
@@ -47,6 +45,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', auth.routesPublic);
+app.use('/jobs', jobs.routes);
 
 //
 // ABOVE: public API
@@ -59,9 +58,6 @@ app.use(authMiddleware.middleware);
 //
 
 app.use('/auth', auth.routesAuthed);
-app.use('/jobs', jobs.routes);
-app.use('/python', python.routes);
-app.use('/settings', settings.routes);
 
 app.get('/dashboard', (req, res) => {
   res.send(req.jwt.name);
