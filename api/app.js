@@ -25,5 +25,7 @@ const _ = require('lodash');
 const config = require('./config');
 
 _.chain(config.directories)
-  .each((dir) => { fs.ensureDirSync(dir); })
+  .each((dir) => {
+    fs.ensureDirSync(dir);
+  })
   .value();

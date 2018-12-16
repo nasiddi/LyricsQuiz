@@ -9,7 +9,6 @@ module.exports = {
   cleanup: true,
   directories: {
     storage: path.resolve('./storage'),
-    backend: path.resolve('../backend'),
   },
   logging: {
     http: true,
